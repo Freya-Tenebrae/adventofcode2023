@@ -1,0 +1,6 @@
+.vscode
+not.cpp
+*/*.out
+*/*/*.o
+*/example/*
+*/input/*
