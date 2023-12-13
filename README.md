@@ -16,7 +16,7 @@
 
 [day 08](https://adventofcode.com/2023/day/8) : <img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" /><img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" />
 
-[day 09](https://adventofcode.com/2023/day/9) : will be done later (didn't have a computer that day)
+[day 09](https://adventofcode.com/2023/day/9) : <img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" /><img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" />
 
 [day 10](https://adventofcode.com/2023/day/10) : <img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" /><img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" />
 
