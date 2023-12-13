@@ -30,7 +30,7 @@ $(NAME_P2): $(OBJS_P2)
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
 getInput:
-	cp ../../input/$(YEAR)/$(DAY)/input.txt input/input.txt
+	cp ../../adventofcodeInput/$(YEAR)/$(DAY)/input.txt input/input.txt
 
 clean:
 	$(RM) $(OBJS_P1) $(OBJS_P2)
