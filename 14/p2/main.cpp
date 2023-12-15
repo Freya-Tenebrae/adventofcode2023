@@ -3,61 +3,44 @@
 #include <iostream>
 #include <vector>
 
-class Caneva
+class Dish
 {
 	private:
 		int								_sizeX;
 		int								_sizeY;
 		int 							_totalLoad;
 		std::vector<std::vector<char>>	_map;
-		
 		std::vector<std::vector<std::vector<char>>>	_previousMaps;
 
-	public:
-		Caneva();
-		~Caneva();
-
-		void addLine(std::string line);
 		void tiltingN();
 		void tiltingW();
 		void tiltingS();
 		void tiltingE();
+
+	public:
+		Dish();
+		~Dish();
+
+		void addLine(std::string line);
 		std::vector<int> getCycle();
 		void spinning();
 		void computeTotalLoad();
-		void print() const;
-		void spinDidntChange();
 
-		int								getSizeX() const;
-		int								getSizeY() const;
-		int								getTotalLoad() const;
-		std::vector<std::vector<char>>	getMap() const;
+		void print() const;
+		int	getTotalLoad() const;
 };
 
-Caneva::Caneva(): _sizeX(0), _sizeY(0), _totalLoad(0)
+Dish::Dish(): _sizeX(0), _sizeY(0), _totalLoad(0)
 {
 
 }
 
-Caneva::~Caneva()
+Dish::~Dish()
 {
 
 }
 
-void Caneva::addLine(std::string line)
-{
-	std::vector<char> tmp;
-
-	if (_sizeX == 0)
-		_sizeX = line.size();
-
-	for (size_t i = 0; i < line.size(); i++)
-		tmp.push_back(line[i]);
-	_map.push_back(tmp);
-	_sizeY++;
-}
-
-void Caneva::tiltingN()
+void Dish::tiltingN()
 {
 	for (int i = 0; i < _sizeY - 1; i++)
 	{
@@ -82,7 +65,7 @@ void Caneva::tiltingN()
 	}
 }
 
-void Caneva::tiltingW()
+void Dish::tiltingW()
 {
 	for (int j = 0; j < _sizeX - 1; j++)
 	{
@@ -107,7 +90,7 @@ void Caneva::tiltingW()
 	}
 }
 
-void Caneva::tiltingS()
+void Dish::tiltingS()
 {
 	for (int i = _sizeY - 1; i > 0; i--)
 	{
@@ -132,7 +115,7 @@ void Caneva::tiltingS()
 	}
 }
 
-void Caneva::tiltingE()
+void Dish::tiltingE()
 {
 	for (int j = _sizeX - 1; j > 0; j--)
 	{
@@ -157,7 +140,20 @@ void Caneva::tiltingE()
 	}
 }
 
-std::vector<int> Caneva::getCycle()
+void Dish::addLine(std::string line)
+{
+	std::vector<char> tmp;
+
+	if (_sizeX == 0)
+		_sizeX = line.size();
+
+	for (size_t i = 0; i < line.size(); i++)
+		tmp.push_back(line[i]);
+	_map.push_back(tmp);
+	_sizeY++;
+}
+
+std::vector<int> Dish::getCycle()
 {
 	for (size_t x = 0; x < _previousMaps.size(); x++)
 	{
@@ -183,7 +179,7 @@ std::vector<int> Caneva::getCycle()
 	return {};
 }
 
-void Caneva::spinning()
+void Dish::spinning()
 {
 	std::vector<std::vector<char>>	previousMap;
 	std::vector<char>				tmp;
@@ -204,7 +200,7 @@ void Caneva::spinning()
 	this->tiltingE();
 }
 
-void Caneva::computeTotalLoad()
+void Dish::computeTotalLoad()
 {
 	for (int i = 0; i < _sizeY; i++)
 	{
@@ -216,90 +212,90 @@ void Caneva::computeTotalLoad()
 	}
 }
 
-void Caneva::print() const
+void Dish::print() const
 {
 	for (int i = 0; i < _sizeY; i++)
 	{
 		for (int j = 0; j < _sizeX; j++)
-			std::cout << _map[i][j];
+		{
+			if (_map[i][j] == '.')
+				std::cout << "\033[0;30m.";
+			else if (_map[i][j] == 'O')
+				std::cout << "\033[0;34mO";
+			else if (_map[i][j] == '#')
+				std::cout << "\033[0;35m#";
+		}
 		std::cout << std::endl;
 	}
+	std::cout << "\033[0m";
+	std::cout << std::endl;
 }
 
-int	Caneva::getSizeX() const
-{
-	return (_sizeX);
-}
-
-int	Caneva::getSizeY() const
-{
-	return (_sizeY);
-}
-
-int	Caneva::getTotalLoad() const
+int	Dish::getTotalLoad() const
 {
 	return (_totalLoad);
 }
 
-std::vector<std::vector<char>>	Caneva::getMap() const
-{
-	return (_map);
-}
-
-
-
-
-
-
-
-
-void resolve(Caneva &caneva, int &total, bool debug)
+void resolve(Dish &dish, int &total, bool debug)
 {
 	if (debug)
 	{
 		std::cout << "Starting Canevas :" << std::endl;
-		caneva.print();
-		std::cout << std::endl;
-		std::cout << std::endl;
+		dish.print();
 	}
 
-	int i;
+	int i, j;
 	std::vector<int> cycling;
 	for (i = 0; i < 1000000000; i++)
 	{
-		caneva.spinning();
-		cycling = caneva.getCycle();
+		dish.spinning();
+		cycling = dish.getCycle();
 		if (cycling.size() == 2)
 			break;
 
 		if (debug)
 		{
-			std::cout << "Canevas after " << i + 1 << " spins:" << std::endl;
-			caneva.print();
-			std::cout << std::endl;
-			std::cout << std::endl;
+			std::cout << "Canevas after \033[0;34m" << i + 1 << "\033[0m spins:" << std::endl;
+			dish.print();
 		}
 	}
 
 	int neededCycle = (1000000000 - cycling[0] - 1) % (cycling[1] - cycling[0]);
 
-	for (int j = 0; j < neededCycle; j++)
+	for (j = 0; j < neededCycle; j++)
 	{
-		caneva.spinning();
+		dish.spinning();
 		if (debug)
 		{
-			std::cout << "Canevas after " << i + j + 1 << " spins:" << std::endl;
-			caneva.print();
-			std::cout << std::endl;
-			std::cout << std::endl;
+			std::cout << "Canevas after \033[0;34m" << i + j + 1 << "\033[0m spins:" << std::endl;
+			dish.print();
 		}
 	}
 
-	std::cout << "first cycling at " <<  cycling[0] << std::endl;
-	std::cout << "to " <<  cycling[1] << std::endl;
+	if (debug)
+	{
+		std::cout << "After \033[0;32m";
+		std::cout <<  cycling[0];
+		std::cout << "\033[0m spin cycle, the position of all round rock will cycle each \033[0;32m";
+		std::cout <<  (cycling[1] - cycling[0]);
+		std::cout << "\033[0m spin cycle.";
+		std::cout << std::endl;
+		std::cout << "Canevas after \033[0;34m1000000000\033[0m spins cycle will look like the \033[0;32m";
+		std::cout << i + j + 1 - (cycling[1] - cycling[0]);
+		std::cout << "th\033[0m or \033[0;32m";
+		std::cout << i + j + 1;
+		std::cout << "th\033[0m or \033[0;33m";
+		std::cout << i + j + 1 - (cycling[1] - cycling[0]);
+		std::cout << " + ";
+		std::cout << (cycling[1] - cycling[0]);
+		std::cout << " * n\033[0m spin cycle:";
+		std::cout << std::endl;
+		dish.print();
+		std::cout << std::endl;
+	}
 
-	caneva.computeTotalLoad();
-	total = caneva.getTotalLoad();
+	dish.computeTotalLoad();
+	total = dish.getTotalLoad();
 }
 
 int main(int argc, char const *argv[])
@@ -313,17 +309,17 @@ int main(int argc, char const *argv[])
 	std::string line;
 	int total = 0;
 	bool debug = false;
-	Caneva caneva;
+	Dish dish;
 
 	if (argc == 3)
 		debug = true;
 
 	while(std::getline(input, line))
-		caneva.addLine(line);
+		dish.addLine(line);
 
-	resolve(caneva, total, debug);
+	resolve(dish, total, debug);
 
-	std::cout << "The total load on North side is : \033[1;33m";
+	std::cout << "The total load on the north support beams is : \033[1;33m";
 	std::cout << total;
 	std::cout << "\033[0m" << std::endl;
 	return (0);

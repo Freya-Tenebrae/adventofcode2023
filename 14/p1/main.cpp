@@ -90,18 +90,38 @@ void Caneva::print() const
 	for (int i = 0; i < _sizeY; i++)
 	{
 		for (int j = 0; j < _sizeX; j++)
-			std::cout << _map[i][j];
+		{
+			if (_map[i][j] == '.')
+				std::cout << "\033[0;30m.";
+			else if (_map[i][j] == 'O')
+				std::cout << "\033[0;34mO";
+			else if (_map[i][j] == '#')
+				std::cout << "\033[0;35m#";
+		}
 
 		if (i == _sizeY / 2)
-			std::cout << "  -->  ";
+			std::cout << "  \033[0;33m-->\033[0m  ";
 		else
 			std::cout << "       ";
 
 		for (int j = 0; j < _sizeX; j++)
-			std::cout << _mapAfterTilt[i][j];
+		{
+			if (_mapAfterTilt[i][j] == '.' && _map[i][j] == 'O')
+				std::cout << "\033[0;32m.";
+			else if (_mapAfterTilt[i][j] == '.')
+				std::cout << "\033[0;30m.";
+			else if (_mapAfterTilt[i][j] == 'O' && _map[i][j] == '.')
+				std::cout << "\033[0;32mO";
+			else if (_mapAfterTilt[i][j] == 'O')
+				std::cout << "\033[0;34mO";
+			else if (_mapAfterTilt[i][j] == '#')
+				std::cout << "\033[0;35m#";
+		}
 
 		std::cout << std::endl;
 	}
+	std::cout << "\033[0m";
+	std::cout << std::endl;
 }
 
 int	Caneva::getTotalLoad() const
@@ -118,8 +138,6 @@ void resolve(Caneva &caneva, int &total, bool debug)
 	{
 		std::cout << "Canevas :" << std::endl;
 		caneva.print();
-		std::cout << std::endl;
-		std::cout << std::endl;
 	}
 	total = caneva.getTotalLoad();
 }
