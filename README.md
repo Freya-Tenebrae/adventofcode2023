@@ -30,11 +30,11 @@
 
 [day 15](https://adventofcode.com/2023/day/15) : <img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" /><img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" />
 
-[day 16](https://adventofcode.com/2023/day/16) : not released yet
+[day 16](https://adventofcode.com/2023/day/16) : <img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" /><img src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" data-canonical-src="https://github.com/Freya-Tenebrae/adventofcode2023/blob/main/Golden_star.svg.png" width="16" height="16" />
 
-[day 17](https://adventofcode.com/2023/day/17) : not released yet
+[day 17](https://adventofcode.com/2023/day/17) : will be done later
 
-[day 18](https://adventofcode.com/2023/day/18) : not released yet
+[day 18](https://adventofcode.com/2023/day/18) : will be done later
 
 [day 19](https://adventofcode.com/2023/day/19) : not released yet
 
